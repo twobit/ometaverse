@@ -1,0 +1,24 @@
+// scheme://username:password@domain:port/path?query_string#fragment_id
+ometa URL {
+    root = <proto?:proto auth?:a host:host port?:port path?:p query?:q hash?:h>:u -> ({
+        protocol: proto + ':',
+        slashes: true,
+        auth: a.join(':'),
+        host: host + (port ? ':' + port : ''),
+        port: port,
+        hostname: host,
+        href: u,
+        hash: h,
+        search: '?' + q,
+        query: q,
+        pathname: p,
+        path: p + (q ? '?' + q : ''),
+    }),
+    proto = (/[a-z0-9]+/:s ':' '/' '/' -> s),
+    auth  = (/[^:@]+/:u (':' /[^@]+/)?:p '@' -> [u, p]),
+    host  = /[a-z0-9\.\-\_]+/:d -> d,
+    port  = (':' /[0-9]+/:p -> p),
+    path  = (/[^?#]+/:p -> p),
+    query = ('?' /[^#]+/:q -> q),
+    hash  = (/.+/:h -> h)
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ometaverse",
+  "version": "0.0.1",
+  "author": "Stephen Murphy <stephen@hypernaut.com>",
+  "description": "Collection of OMetaJS grammars",
+  "keywords": [
+    "ometa",
+    "ometajs",
+    "parser",
+    "parsers"
+  ],
+  "scripts": {
+      "test": "mocha --require should"
+  },
+  "dependencies" : {
+    "ometajs": "*"
+  },
+  "devDependencies": {
+      "should": "1.2.x",
+      "mocha": "1.7.x"
+  }
+}
